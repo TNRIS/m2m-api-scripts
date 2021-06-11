@@ -1,0 +1,27 @@
+{
+  'abstractText': 'The National Agriculture Imagery Program (NAIP) acquires aerial imagery during the agricultural growing seasons in the continental U.S.  A primary goal of the NAIP program is to make digital ortho photography available to governmental agencies and the public within a year of acquisition.',
+  'acquisitionStart': '2003-06-01',
+  'acquisitionEnd': None,
+  'catalogs': ['EE'],
+  'collectionName': 'NAIP',
+  'collectionLongName': 'National Agriculture Imagery Program',
+  'datasetId': '5e83a340bf820c39',
+  'datasetAlias': 'naip',
+  'datasetCategoryName': 'Aerial Imagery',
+  'dataOwner': 'DMID',
+  'dateUpdated': '2021-03-29 13:57:00.348555-05',
+  'doiNumber': 'https://doi.org/10.5066/F7QN651G',
+  'ingestFrequency': 'P1D',
+  'keywords': 'None,Aerial Imagery',
+  'legacyId': 9385,
+  'sceneCount': 1535447,
+  'spatialBounds': {
+    'north': 49.4542176579916,
+    'east': -66.9208507401202,
+    'south': -0.0099973,
+    'west': -124.891487596185
+  },
+  'temporalCoverage': '["2003-06-01 00:00:00-05","2020-12-17 00:00:00-06"]',
+  'supportCloudCover': False,
+  'supportDeletionSearch': False
+}

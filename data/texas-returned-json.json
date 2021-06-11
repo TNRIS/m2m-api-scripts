@@ -1,0 +1,27 @@
+{
+  'abstractText': None,
+  'acquisitionStart': '0021-09-16',
+  'acquisitionEnd': None,
+  'catalogs': ['HDDS'],
+  'collectionName': '201109_Fires_Texas',
+  'collectionLongName': '201109_Fires_Texas',
+  'datasetId': '5ee6c5862d05aaf2',
+  'datasetAlias': 'event722',
+  'datasetCategoryName': '2011 Events',
+  'dataOwner': 'DMID',
+  'dateUpdated': '2020-04-07 18:02:02.614856-05',
+  'doiNumber': None,
+  'ingestFrequency': 'P1D',
+  'keywords': 'None,U.S. Geological Survey (USGS),Earth Resources Observation and Science (EROS) Center,Imagery,Image Map,ISO 19115 Topic Category,010,imageryBaseMapsEarthCover',
+  'legacyId': 6388,
+  'sceneCount': 1270103,
+  'spatialBounds': {
+    'north': 34.1805407723197,
+    'east': -92.6863040582076,
+    'south': 26.151839,
+    'west': -99.1223679936241
+  },
+  'temporalCoverage': '["1897-04-05 00:00:00-06","2020-06-30 00:00:00-05"]',
+  'supportCloudCover': True,
+  'supportDeletionSearch': False
+}
