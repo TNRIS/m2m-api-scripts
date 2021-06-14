@@ -6,7 +6,7 @@ This script was created for a specific purpose here at TNRIS to transfer about 1
 
 #### base-level requirements
 - Ubuntu 20.04 LTS (Focal Fossa) or Linux Mint 20.1 (Ulyssa)
-  - other OS's can be used but this documentation is specific to Linux Debian-based distributions.
+  - other OS's can be used but this documentation is specific to Debian-based Linux distributions.
 - Python 3.8.5
 - AWS Credentials
 - USGS Machine-to-Machine (M2M) API Login Account and Request

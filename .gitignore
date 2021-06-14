@@ -1,6 +1,10 @@
 # secrets
 set-env-secrets.sh
 
+# data
+*.json
+!spec/*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

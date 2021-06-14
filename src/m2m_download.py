@@ -87,8 +87,7 @@ if __name__ == '__main__':
 
     # download datasets
     for dataset in datasets:
-        # skip any other datasets that might be found, logging it incase I want to look into
-        # downloading that data in the future.
+        # skip any other datasets that might be found, logging it in case I want to look into it later
         if dataset['datasetAlias'] != datasetName:
             print("Found dataset " + dataset['collectionName'] + " but skipping it.\n")
             continue
@@ -101,7 +100,7 @@ if __name__ == '__main__':
 
         payload = {
             'datasetName': dataset['datasetAlias'],
-            'maxResults': 5,
+            # 'maxResults': 3,
             'startingNumber': 1,
             'sceneFilter': {
                 'spatialFilter': spatialFilter,
@@ -122,29 +121,33 @@ if __name__ == '__main__':
                 # Add this scene to the list I would like to download
                 sceneIds.append(result['entityId'])
 
+            # print("SCENE IDs:", sceneIds)
+
             # Find the download options for these scenes
             # NOTE :: Remember the scene list cannot exceed 50,000 items!
             payload = {'datasetName': dataset['datasetAlias'], 'entityIds': sceneIds}
 
             downloadOptions = sendRequest(serviceUrl + "download-options", payload, apiKey)
+            print('downloadOptions:', downloadOptions)
 
             # Aggregate a list of available products
             downloads = []
             for product in downloadOptions:
-                    # Make sure the product is available for this scene
-                    if product['available'] == True:
-                         downloads.append({'entityId': product['entityId'], 'productId': product['id']})
-
-            print("DOWNLOAD PRODUCTS AVAILABLE: ", downloads)
+                # Make sure the product is available for this scene
+                if product['available'] == True:
+                    downloads.append({'entityId': product['entityId'], 'productId': product['id']})
 
             # Did we find products?
             if downloads:
                 requestedDownloadsCount = len(downloads)
+                print('REQUESTED DOWNLOAD COUNT:', requestedDownloadsCount)
                 # set a label for the download request
                 label = "Texas NAIP 2020"
                 payload = {'downloads': downloads, 'label': label}
                 # Call the download to get the direct download urls
                 requestResults = sendRequest(serviceUrl + "download-request", payload, apiKey)
+
+                print(requestResults['preparingDownloads'])
 
                 # PreparingDownloads has a valid link that can be used but data may not be immediately available
                 # Call the download-retrieve method to get download that is available for immediate download
@@ -179,6 +182,7 @@ if __name__ == '__main__':
                     for download in requestResults['availableDownloads']:
                         # TODO :: Implement a downloading routine
                         print("DOWNLOAD: " + download['url'])
+
                 print("\nAll downloads are available to download.\n")
         else:
             print("Search found no results.\n")
