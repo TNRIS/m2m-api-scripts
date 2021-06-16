@@ -6,15 +6,12 @@
 # June 2021
 # script to transfer large amount of NAIP 2020 data to TNRIS s3 bucket
 # run it on an AWS EC2 because it could take awhile...
-#
-# imports======================================================================
+# =============================================================================
+
 import json
 import requests
 import sys, os
 import time
-import boto3
-
-# main=========================================================================
 
 # setup variables from environment variables
 aws_key = os.environ['AWS_KEY']
@@ -62,7 +59,7 @@ def sendRequest(url, data, apiKey = None):
 
 
 if __name__ == '__main__':
-    print("\nRunning Script...\n")
+    print("\nRunning Scripts...\n")
 
     serviceUrl = "https://m2m.cr.usgs.gov/api/api/json/stable/"
 
@@ -124,6 +121,8 @@ if __name__ == '__main__':
                 # Add this scene to the list I would like to download
                 sceneIds.append(result['entityId'])
 
+            # print("SCENE IDs:", sceneIds)
+
             # Find the download options for these scenes
             # NOTE :: Remember the scene list cannot exceed 50,000 items!
             payload = {'datasetName': dataset['datasetAlias'], 'entityIds': sceneIds}
@@ -140,79 +139,51 @@ if __name__ == '__main__':
             # Did we find products?
             if downloads:
                 requestedDownloadsCount = len(downloads)
-                print('(line 143) REQUESTED DOWNLOADS COUNT:', requestedDownloadsCount)
+                print('REQUESTED DOWNLOAD COUNT:', requestedDownloadsCount)
                 # set a label for the download request
                 label = "Texas NAIP 2020"
                 payload = {'downloads': downloads, 'label': label}
                 # Call the download to get the direct download urls
-                downloadRequest = sendRequest(serviceUrl + "download-request", payload, apiKey)
+                requestResults = sendRequest(serviceUrl + "download-request", payload, apiKey)
 
-                # print('downloadRequest[preparingDownloads]:', downloadRequest['preparingDownloads'])
+                # print('requestRestuls[preparingDownloads]:', requestResults['preparingDownloads'])
 
                 # PreparingDownloads has a valid link that can be used but data may not be immediately available
                 # Call the download-retrieve method to get download that is available for immediate download
-                if downloadRequest['preparingDownloads'] != None and len(downloadRequest['preparingDownloads']) > 0:
+                if requestResults['preparingDownloads'] != None and len(requestResults['preparingDownloads']) > 0:
                     payload = {'label': label}
-                    downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
+                    moreDownloadUrls = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
 
-                    print('downloadRetrieve:', json.dumps(downloadRetrieve))
+                    print('moreDownloadUrls[available]:', moreDownloadUrls['available'])
 
-                    downloadUrls = []
+                    downloadIds = []
                     sleep_count = 0
 
-                    for download in downloadRetrieve['available']:
-                        downloadUrls.append(download['url'])
-                        print("(line 165) URL ADDED TO DOWNLOAD LIST: " + download['url'])
-
-                    print("downloadUrls array", downloadUrls)
+                    for download in moreDownloadUrls['available']:
+                        downloadIds.append(download['downloadId'])
+                        print("(line 163) DOWNLOAD: " + download['url'])
 
                     # Didn't get all of the requested downloads, call the download-retrieve method again after 30 seconds,
-                    # but only do this 10 times (attempt for about 5 minutes) then give up
-                    while len(downloadUrls) < requestedDownloadsCount and sleep_count <= 10:
-                        preparingDownloads = requestedDownloadsCount - len(downloadUrls)
+                    # but only do this 20 times (attempt for about 10 minutes) then give up
+                    while len(downloadIds) < requestedDownloadsCount and sleep_count <= 20:
+                        preparingDownloads = requestedDownloadsCount - len(downloadIds)
                         sleep_count += 1
-                        print("\n", preparingDownloads, "downloads are not available. Waiting for 30 seconds.\n", "{}/10 attempts.\n".format(sleep_count))
+                        print("\n", preparingDownloads, "downloads are not available. Waiting for 30 seconds.\n", "{}/20 attempts.\n".format(sleep_count))
                         time.sleep(30)
                         print("Trying to retrieve data\n")
-                        downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
-                        for download in downloadRetrieve['available']:
-                            if download['downloadId'] not in downloadUrls:
-                                downloadUrls.append(download['url'])
-                                print("(line 181) DOWNLOAD: " + download['url'])
-
-                    # for url in downloadUrls:
-                    #     # assign each url in list to file variable for use
-                    #     file = requests.get(url, stream=True)
-
-                        # print("line 184:", file)
-
-                        # aws s3 variables
-                        # s3_path = s3_bucket + s3_key
-                        # jp2_path = s3_path + "jp2/"
-                        # tif_path = s3_path + "tif/"
-                        # Set the desired multipart threshold value (5GB)
-                        # GB = 1024 ** 3
-                        # config = TransferConfig(multipart_threshold=5*GB)
-                        # client = boto3.client('s3')
-                        #
-                        # with open(file, "rb") as f:
-                        #     print(f)
-                        #     s3.upload_fileobj(f, s3_bucket, "OBJECT_NAME")
-
-
-                        # write file variable to actual local zipfile saving to user provided directory and doing it in chunks
-                        # with open('{}/{}'.format(s3_path, file, 'wb') as zipfile:
-                        #     for chunk in file.iter_content(chunk_size=1024):
-                        #         if chunk:
-                        #             zipfile.write(chunk)
-
+                        moreDownloadUrls = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
+                        for download in moreDownloadUrls['available']:
+                            if download['downloadId'] not in downloadIds:
+                                downloadIds.append(download['downloadId'])
+                                print("(line 175) DOWNLOAD: " + download['url'])
 
                 else:
                     # Get all available downloads
-                    for download in downloadRequest['availableDownloads']:
+                    for download in requestResults['availableDownloads']:
                         # TODO :: Implement a downloading routine
                         print("(line 181) DOWNLOAD: " + download['url'])
 
+                print("\nAll downloads are available to download.\n")
         else:
             print("Search found no results.\n")
 

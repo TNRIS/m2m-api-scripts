@@ -1,0 +1,1009 @@
+LINE 150-- - downloadRequest: {
+  'availableDownloads': [],
+  'duplicateProducts': [],
+  'preparingDownloads': [{
+    'downloadId': 45689583,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDU2ODk1ODMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45689584,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDU2ODk1ODQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45689585,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDU2ODk1ODUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246423,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246424,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246425,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246426,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246427,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246428,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246429,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MjksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246430,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246431,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246432,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246433,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246434,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246435,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246436,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246437,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246438,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246439,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0MzksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246440,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246441,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246442,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246443,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246444,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246445,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246446,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246447,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246448,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246449,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NDksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246450,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246451,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246452,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246453,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246454,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246455,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246456,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246457,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246458,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246459,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NTksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246460,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246461,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246462,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246463,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246464,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246465,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246466,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246467,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246468,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246469,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NjksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246470,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246471,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246472,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246473,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246474,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246475,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246476,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246477,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246478,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246479,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0NzksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246480,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246481,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246482,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246483,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246484,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246485,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246486,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246487,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246488,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246489,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0ODksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246490,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246491,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246492,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246493,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246494,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246495,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246496,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246497,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246498,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246499,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY0OTksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246500,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246501,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246502,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246503,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45689595,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDU2ODk1OTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246505,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246506,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246507,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246508,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246509,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MDksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246510,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246511,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246512,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246513,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246514,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246515,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246516,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246517,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246518,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246519,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MTksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246520,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246521,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246522,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246523,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246524,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246525,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246526,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246527,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246528,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246529,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MjksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246530,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246531,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246532,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246533,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246534,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246535,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246536,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246537,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246538,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246539,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1MzksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246540,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246541,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246542,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246543,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246544,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246545,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246546,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246547,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246548,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246549,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NDksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246550,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246551,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246552,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246553,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246554,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246555,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246556,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246557,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246558,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246559,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NTksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246560,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246561,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246562,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246563,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246564,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246565,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246566,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246567,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246568,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246569,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NjksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246570,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246571,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246572,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246573,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246574,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246575,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246576,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45689603,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDU2ODk2MDMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246578,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246579,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1NzksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246580,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246581,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246582,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246583,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246584,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246585,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246586,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246587,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246588,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246589,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1ODksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246590,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 44783885,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDQ3ODM4ODUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246591,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246592,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 44783886,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDQ3ODM4ODYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 44783887,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDQ3ODM4ODcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246593,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246594,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246595,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246596,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246597,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246598,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45227915,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyMjc5MTUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45227916,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyMjc5MTYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246599,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY1OTksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246600,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45227914,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyMjc5MTQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 44783891,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDQ3ODM4OTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246601,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246602,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDIsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246603,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDMsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246604,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDQsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246605,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDUsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246606,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDYsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246608,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246609,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MDksImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246610,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MTAsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45246611,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNDY2MTEsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45252747,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNTI3NDcsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }, {
+    'downloadId': 45252748,
+    'eulaCode': None,
+    'url': 'https://dds.cr.usgs.gov/download-staging/eyJpZCI6NDUyNTI3NDgsImNvbnRhY3RJZCI6MTkyNTQyNX0='
+  }],
+  'failed': [],
+  'newRecords': {
+    '45689583': 'Texas NAIP 2020',
+    '45689584': 'Texas NAIP 2020',
+    '45689585': 'Texas NAIP 2020',
+    '45246423': 'Texas NAIP 2020',
+    '45246424': 'Texas NAIP 2020',
+    '45246425': 'Texas NAIP 2020',
+    '45246426': 'Texas NAIP 2020',
+    '45246427': 'Texas NAIP 2020',
+    '45246428': 'Texas NAIP 2020',
+    '45246429': 'Texas NAIP 2020',
+    '45246430': 'Texas NAIP 2020',
+    '45246431': 'Texas NAIP 2020',
+    '45246432': 'Texas NAIP 2020',
+    '45246433': 'Texas NAIP 2020',
+    '45246434': 'Texas NAIP 2020',
+    '45246435': 'Texas NAIP 2020',
+    '45246436': 'Texas NAIP 2020',
+    '45246437': 'Texas NAIP 2020',
+    '45246438': 'Texas NAIP 2020',
+    '45246439': 'Texas NAIP 2020',
+    '45246440': 'Texas NAIP 2020',
+    '45246441': 'Texas NAIP 2020',
+    '45246442': 'Texas NAIP 2020',
+    '45246443': 'Texas NAIP 2020',
+    '45246444': 'Texas NAIP 2020',
+    '45246445': 'Texas NAIP 2020',
+    '45246446': 'Texas NAIP 2020',
+    '45246447': 'Texas NAIP 2020',
+    '45246448': 'Texas NAIP 2020',
+    '45246449': 'Texas NAIP 2020',
+    '45246450': 'Texas NAIP 2020',
+    '45246451': 'Texas NAIP 2020',
+    '45246452': 'Texas NAIP 2020',
+    '45246453': 'Texas NAIP 2020',
+    '45246454': 'Texas NAIP 2020',
+    '45246455': 'Texas NAIP 2020',
+    '45246456': 'Texas NAIP 2020',
+    '45246457': 'Texas NAIP 2020',
+    '45246458': 'Texas NAIP 2020',
+    '45246459': 'Texas NAIP 2020',
+    '45246460': 'Texas NAIP 2020',
+    '45246461': 'Texas NAIP 2020',
+    '45246462': 'Texas NAIP 2020',
+    '45246463': 'Texas NAIP 2020',
+    '45246464': 'Texas NAIP 2020',
+    '45246465': 'Texas NAIP 2020',
+    '45246466': 'Texas NAIP 2020',
+    '45246467': 'Texas NAIP 2020',
+    '45246468': 'Texas NAIP 2020',
+    '45246469': 'Texas NAIP 2020',
+    '45246470': 'Texas NAIP 2020',
+    '45246471': 'Texas NAIP 2020',
+    '45246472': 'Texas NAIP 2020',
+    '45246473': 'Texas NAIP 2020',
+    '45246474': 'Texas NAIP 2020',
+    '45246475': 'Texas NAIP 2020',
+    '45246476': 'Texas NAIP 2020',
+    '45246477': 'Texas NAIP 2020',
+    '45246478': 'Texas NAIP 2020',
+    '45246479': 'Texas NAIP 2020',
+    '45246480': 'Texas NAIP 2020',
+    '45246481': 'Texas NAIP 2020',
+    '45246482': 'Texas NAIP 2020',
+    '45246483': 'Texas NAIP 2020',
+    '45246484': 'Texas NAIP 2020',
+    '45246485': 'Texas NAIP 2020',
+    '45246486': 'Texas NAIP 2020',
+    '45246487': 'Texas NAIP 2020',
+    '45246488': 'Texas NAIP 2020',
+    '45246489': 'Texas NAIP 2020',
+    '45246490': 'Texas NAIP 2020',
+    '45246491': 'Texas NAIP 2020',
+    '45246492': 'Texas NAIP 2020',
+    '45246493': 'Texas NAIP 2020',
+    '45246494': 'Texas NAIP 2020',
+    '45246495': 'Texas NAIP 2020',
+    '45246496': 'Texas NAIP 2020',
+    '45246497': 'Texas NAIP 2020',
+    '45246498': 'Texas NAIP 2020',
+    '45246499': 'Texas NAIP 2020',
+    '45246500': 'Texas NAIP 2020',
+    '45246501': 'Texas NAIP 2020',
+    '45246502': 'Texas NAIP 2020',
+    '45246503': 'Texas NAIP 2020',
+    '45689595': 'Texas NAIP 2020',
+    '45246505': 'Texas NAIP 2020',
+    '45246506': 'Texas NAIP 2020',
+    '45246507': 'Texas NAIP 2020',
+    '45246508': 'Texas NAIP 2020',
+    '45246509': 'Texas NAIP 2020',
+    '45246510': 'Texas NAIP 2020',
+    '45246511': 'Texas NAIP 2020',
+    '45246512': 'Texas NAIP 2020',
+    '45246513': 'Texas NAIP 2020',
+    '45246514': 'Texas NAIP 2020',
+    '45246515': 'Texas NAIP 2020',
+    '45246516': 'Texas NAIP 2020',
+    '45246517': 'Texas NAIP 2020',
+    '45246518': 'Texas NAIP 2020',
+    '45246519': 'Texas NAIP 2020',
+    '45246520': 'Texas NAIP 2020',
+    '45246521': 'Texas NAIP 2020',
+    '45246522': 'Texas NAIP 2020',
+    '45246523': 'Texas NAIP 2020',
+    '45246524': 'Texas NAIP 2020',
+    '45246525': 'Texas NAIP 2020',
+    '45246526': 'Texas NAIP 2020',
+    '45246527': 'Texas NAIP 2020',
+    '45246528': 'Texas NAIP 2020',
+    '45246529': 'Texas NAIP 2020',
+    '45246530': 'Texas NAIP 2020',
+    '45246531': 'Texas NAIP 2020',
+    '45246532': 'Texas NAIP 2020',
+    '45246533': 'Texas NAIP 2020',
+    '45246534': 'Texas NAIP 2020',
+    '45246535': 'Texas NAIP 2020',
+    '45246536': 'Texas NAIP 2020',
+    '45246537': 'Texas NAIP 2020',
+    '45246538': 'Texas NAIP 2020',
+    '45246539': 'Texas NAIP 2020',
+    '45246540': 'Texas NAIP 2020',
+    '45246541': 'Texas NAIP 2020',
+    '45246542': 'Texas NAIP 2020',
+    '45246543': 'Texas NAIP 2020',
+    '45246544': 'Texas NAIP 2020',
+    '45246545': 'Texas NAIP 2020',
+    '45246546': 'Texas NAIP 2020',
+    '45246547': 'Texas NAIP 2020',
+    '45246548': 'Texas NAIP 2020',
+    '45246549': 'Texas NAIP 2020',
+    '45246550': 'Texas NAIP 2020',
+    '45246551': 'Texas NAIP 2020',
+    '45246552': 'Texas NAIP 2020',
+    '45246553': 'Texas NAIP 2020',
+    '45246554': 'Texas NAIP 2020',
+    '45246555': 'Texas NAIP 2020',
+    '45246556': 'Texas NAIP 2020',
+    '45246557': 'Texas NAIP 2020',
+    '45246558': 'Texas NAIP 2020',
+    '45246559': 'Texas NAIP 2020',
+    '45246560': 'Texas NAIP 2020',
+    '45246561': 'Texas NAIP 2020',
+    '45246562': 'Texas NAIP 2020',
+    '45246563': 'Texas NAIP 2020',
+    '45246564': 'Texas NAIP 2020',
+    '45246565': 'Texas NAIP 2020',
+    '45246566': 'Texas NAIP 2020',
+    '45246567': 'Texas NAIP 2020',
+    '45246568': 'Texas NAIP 2020',
+    '45246569': 'Texas NAIP 2020',
+    '45246570': 'Texas NAIP 2020',
+    '45246571': 'Texas NAIP 2020',
+    '45246572': 'Texas NAIP 2020',
+    '45246573': 'Texas NAIP 2020',
+    '45246574': 'Texas NAIP 2020',
+    '45246575': 'Texas NAIP 2020',
+    '45246576': 'Texas NAIP 2020',
+    '45689603': 'Texas NAIP 2020',
+    '45246578': 'Texas NAIP 2020',
+    '45246579': 'Texas NAIP 2020',
+    '45246580': 'Texas NAIP 2020',
+    '45246581': 'Texas NAIP 2020',
+    '45246582': 'Texas NAIP 2020',
+    '45246583': 'Texas NAIP 2020',
+    '45246584': 'Texas NAIP 2020',
+    '45246585': 'Texas NAIP 2020',
+    '45246586': 'Texas NAIP 2020',
+    '45246587': 'Texas NAIP 2020',
+    '45246588': 'Texas NAIP 2020',
+    '45246589': 'Texas NAIP 2020',
+    '45246590': 'Texas NAIP 2020',
+    '44783885': 'Texas NAIP 2020',
+    '45246591': 'Texas NAIP 2020',
+    '45246592': 'Texas NAIP 2020',
+    '44783886': 'Texas NAIP 2020',
+    '44783887': 'Texas NAIP 2020',
+    '45246593': 'Texas NAIP 2020',
+    '45246594': 'Texas NAIP 2020',
+    '45246595': 'Texas NAIP 2020',
+    '45246596': 'Texas NAIP 2020',
+    '45246597': 'Texas NAIP 2020',
+    '45246598': 'Texas NAIP 2020',
+    '45227915': 'Texas NAIP 2020',
+    '45227916': 'Texas NAIP 2020',
+    '45246599': 'Texas NAIP 2020',
+    '45246600': 'Texas NAIP 2020',
+    '45227914': 'Texas NAIP 2020',
+    '44783891': 'Texas NAIP 2020',
+    '45246601': 'Texas NAIP 2020',
+    '45246602': 'Texas NAIP 2020',
+    '45246603': 'Texas NAIP 2020',
+    '45246604': 'Texas NAIP 2020',
+    '45246605': 'Texas NAIP 2020',
+    '45246606': 'Texas NAIP 2020',
+    '45246608': 'Texas NAIP 2020',
+    '45246609': 'Texas NAIP 2020',
+    '45246610': 'Texas NAIP 2020',
+    '45246611': 'Texas NAIP 2020',
+    '45252747': 'Texas NAIP 2020',
+    '45252748': 'Texas NAIP 2020'
+  },
+  'numInvalidScenes': 0
+}

@@ -36,22 +36,27 @@ def upload_file(file_name, bucket, object_name=None):
         return False
     return True
 
-def runner(r, list):
+def runner(r):
     file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
+    print(file_name)
 
-    if file_name.endswith(".jp2"):
-        print("found jp2 file:", file_name)
-        with open('../data/{}'.format(file_name), 'wb') as jpeg:
-            for chunk in r.iter_content(chunk_size=1024):
-                if chunk:
-                    jpeg.write(chunk)
-        print("uploading file: ../data/{}".format(file_name))
-        with open('../data/{}'.format(file_name), 'rb') as upload:
-            upload_file('../data/{}'.format(file_name), s3_bucket, object_name=s3_key + file_name)
-        # after file is uploaded to s3, delete it locally
-        os.remove("../data/{}".format(file_name))
-    else:
-        print("\nFound zip file: {}\nSkipping\n".format(file_name))
+    with open('../data/{}'.format(file_name), 'wb') as f:
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+                f.write(chunk)
+
+    # if zip then unzip
+    if file_name.endswith(".ZIP"):
+        print('found zip file')
+        ZipFile.extractall('../data/{}'.format(file_name))
+    # upload to s3
+    print("uploading file: ../data/{}".format(file_name))
+    with open('../data/{}'.format(file_name), 'rb') as upload:
+        print("uploading file:")
+        upload_file('../data/{}'.format(file_name), s3_bucket, object_name=s3_key + file_name)
+
+    # after file is uploaded to s3, delete it locally
+    os.remove("../data/{}".format(file_name))
 
 
 if __name__ == "__main__":
@@ -59,14 +64,15 @@ if __name__ == "__main__":
         data = json.load(f)
         count = 0
         for obj in data['products']:
-            if obj['productName'] == "Full Resolution":
-                count += 1
-                print('#{} --- url:{}\n'.format(count, obj['url']))
-                response = requests.get(obj['url'], stream=True)
-                if response.ok:
-                    runner(response)
-                else:
-                    rerun_list.append(obj['url'])
+            count += 1
+            print('{}---{}'.format(count, obj['url']))
+            response = requests.get(obj['url'], stream=True)
+            if response.ok:
+                print('response ok')
+                runner(response)
+            else:
+                print('response not good')
+                rerun_list.append(obj['url'])
 
         # check if any urls have been added to rerun list;
         # if so, try response again with runner func

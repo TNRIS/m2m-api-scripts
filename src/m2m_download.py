@@ -6,12 +6,17 @@
 # June 2021
 # script to transfer large amount of NAIP 2020 data to TNRIS s3 bucket
 # run it on an AWS EC2 because it could take awhile...
-# =============================================================================
-
-import json
+#
+# imports======================================================================
+import json, io, time
+from zipfile import ZipFile
 import requests
-import sys, os
+import sys, os, glob, sys
 import time
+import boto3
+from botocore.exceptions import ClientError
+
+# main=========================================================================
 
 # setup variables from environment variables
 aws_key = os.environ['AWS_KEY']
@@ -57,9 +62,36 @@ def sendRequest(url, data, apiKey = None):
 
     return output['data']
 
+# main function that downloads, unzips, uploads to s3, and removes local file from staging area
+def runner(r):
+    file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
+    print(file_name)
+    # write file to local file
+    with open('../data/{}'.format(file_name), 'wb') as f:
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+                f.write(chunk)
+
+    # if zip then unzip
+    if file_name.endswith(".ZIP"):
+        print('found zip file')
+        ZipFile.extractall('../data/{}'.format(file_name))
+
+    # upload to s3
+    print("uploading file: ../data/{}".format(file_name))
+    target = glob.glob(r"../data/*.jp2")
+    if len(target):
+        for item in target:
+            with open(item, 'rb') as upload:
+                print("uploading file:")
+                upload_file(target, s3_bucket, object_name=s3_key + file_name)
+
+    # after file is uploaded to s3, delete it locally
+    os.remove("../data/{}".format(file_name))
+
 
 if __name__ == '__main__':
-    print("\nRunning Scripts...\n")
+    print("\nRunning Script...\n")
 
     serviceUrl = "https://m2m.cr.usgs.gov/api/api/json/stable/"
 
@@ -121,8 +153,6 @@ if __name__ == '__main__':
                 # Add this scene to the list I would like to download
                 sceneIds.append(result['entityId'])
 
-            # print("SCENE IDs:", sceneIds)
-
             # Find the download options for these scenes
             # NOTE :: Remember the scene list cannot exceed 50,000 items!
             payload = {'datasetName': dataset['datasetAlias'], 'entityIds': sceneIds}
@@ -139,51 +169,76 @@ if __name__ == '__main__':
             # Did we find products?
             if downloads:
                 requestedDownloadsCount = len(downloads)
-                print('REQUESTED DOWNLOAD COUNT:', requestedDownloadsCount)
+                print('(line 171) REQUESTED DOWNLOADS COUNT:', requestedDownloadsCount)
                 # set a label for the download request
                 label = "Texas NAIP 2020"
                 payload = {'downloads': downloads, 'label': label}
                 # Call the download to get the direct download urls
-                requestResults = sendRequest(serviceUrl + "download-request", payload, apiKey)
-
-                # print('requestRestuls[preparingDownloads]:', requestResults['preparingDownloads'])
+                downloadRequest = sendRequest(serviceUrl + "download-request", payload, apiKey)
 
                 # PreparingDownloads has a valid link that can be used but data may not be immediately available
                 # Call the download-retrieve method to get download that is available for immediate download
-                if requestResults['preparingDownloads'] != None and len(requestResults['preparingDownloads']) > 0:
+                if downloadRequest['preparingDownloads'] != None and len(downloadRequest['preparingDownloads']) > 0:
                     payload = {'label': label}
-                    moreDownloadUrls = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
+                    downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
 
-                    print('moreDownloadUrls[available]:', moreDownloadUrls['available'])
-
-                    downloadIds = []
+                    downloadUrls = []
                     sleep_count = 0
 
-                    for download in moreDownloadUrls['available']:
-                        downloadIds.append(download['downloadId'])
-                        print("(line 163) DOWNLOAD: " + download['url'])
+                    for download in downloadRetrieve['available']:
+                        downloadUrls.append(download['url'])
 
-                    # Didn't get all of the requested downloads, call the download-retrieve method again after 30 seconds,
-                    # but only do this 20 times (attempt for about 10 minutes) then give up
-                    while len(downloadIds) < requestedDownloadsCount and sleep_count <= 20:
-                        preparingDownloads = requestedDownloadsCount - len(downloadIds)
+                    for download in downloadRetrieve['available']:
+                        downloadUrls.append(download['url'])
+
+                    print("LINE 193---initial downloadUrls array count", len(downloadUrls))
+
+                    # if didn't get all of the requested downloads, call the download-retrieve method again after 30 seconds
+                    while len(downloadUrls) < requestedDownloadsCount:
+                        preparingDownloads = requestedDownloadsCount - len(downloadUrls)
                         sleep_count += 1
-                        print("\n", preparingDownloads, "downloads are not available. Waiting for 30 seconds.\n", "{}/20 attempts.\n".format(sleep_count))
-                        time.sleep(30)
+                        print("\n", preparingDownloads, "downloads are not available. waiting for 10 seconds.\n".format(sleep_count))
+                        time.sleep(10)
                         print("Trying to retrieve data\n")
-                        moreDownloadUrls = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
-                        for download in moreDownloadUrls['available']:
-                            if download['downloadId'] not in downloadIds:
-                                downloadIds.append(download['downloadId'])
-                                print("(line 175) DOWNLOAD: " + download['url'])
+                        downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
+                        for download in downloadRetrieve['available']:
+                            if download['downloadId'] not in downloadUrls:
+                                downloadUrls.append(download['url'])
+
+                    print("LINE 207---downloadUrls array count", len(downloadUrls))
+                    print("LINE 208---print out all downloadUrls", downloadUrls)
+
+                    count = 0
+                    rerun_list = []
+                    # start download, unzip, and upload processes
+                    # calls the runner function above at the start
+                    for url in downloadUrls:
+                        count += 1
+                        print('{}---{}'.format(count, url))
+                        response = requests.get(url, stream=True)
+                        if response.ok:
+                            print('response ok')
+                            runner(response)
+                        else:
+                            print('response not good')
+                            rerun_list.append(obj['url'])
+
+                    # check if any urls have been added to rerun list;
+                    # if so, try response again with runner func
+                    if len(rerun_list) > 0:
+                        print("rerun_list has {} urls. preparing to run...".format(len(rerun_list)))
+                        time.sleep(10)
+                        for u in rerun_list:
+                            response = requests.get(u, stream=True)
+                            if response.ok:
+                                runner(response)
 
                 else:
                     # Get all available downloads
-                    for download in requestResults['availableDownloads']:
+                    for download in downloadRequest['availableDownloads']:
                         # TODO :: Implement a downloading routine
                         print("(line 181) DOWNLOAD: " + download['url'])
 
-                print("\nAll downloads are available to download.\n")
         else:
             print("Search found no results.\n")
 
