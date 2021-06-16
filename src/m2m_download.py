@@ -62,6 +62,26 @@ def sendRequest(url, data, apiKey = None):
 
     return output['data']
 
+def upload_file(file_name, bucket, object_name=None):
+    """
+    Upload a file to an S3 bucket
+    :param file_name: File to upload
+    :param bucket: Bucket to upload to
+    :param object_name: S3 object name. If not specified then file_name is used
+    :return: True if file was uploaded, else False
+    """
+    # If S3 object_name was not specified, use file_name
+    if object_name is None:
+        object_name = file_name
+    # Upload the file
+    s3_client = boto3.client('s3')
+    try:
+        response = s3_client.upload_file(file_name, bucket, object_name)
+    except ClientError as e:
+        logging.error(e)
+        return False
+    return True
+
 # main function that downloads, unzips, uploads to s3, and removes local file from staging area
 def runner(r):
     file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
@@ -83,7 +103,6 @@ def runner(r):
     if len(target):
         for item in target:
             with open(item, 'rb') as upload:
-                print("uploading file:")
                 upload_file(target, s3_bucket, object_name=s3_key + file_name)
 
     # after file is uploaded to s3, delete it locally
