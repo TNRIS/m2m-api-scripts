@@ -2,8 +2,8 @@
 set-env-secrets.sh
 
 # data
-*.json
-!spec/*.json
+# *.json
+# !spec/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

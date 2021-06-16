@@ -1,0 +1,45 @@
+{
+  "available": [{
+    "downloadId": 45406293,
+    "collectionName": "NAIP",
+    "datasetId": "5e83a340bf820c39",
+    "displayId": "M_2609727_SW_14_060_20201216",
+    "entityId": "3013395",
+    "eulaCode": null,
+    "filesize": 66244094,
+    "label": "Texas NAIP 2020",
+    "productCode": "D482",
+    "productName": "Compressed",
+    "statusCode": "A",
+    "statusText": "Available",
+    "url": "https://dds.cr.usgs.gov/download/eyJpZCI6NDU0MDYyOTMsImNvbnRhY3RJZCI6MTkyNTQyNX0="
+  }, {
+    "downloadId": 45420224,
+    "collectionName": "NAIP",
+    "datasetId": "5e83a340bf820c39",
+    "displayId": "M_3109758_SW_14_060_20201206",
+    "entityId": "3014361",
+    "eulaCode": null,
+    "filesize": 69166037,
+    "label": "Texas NAIP 2020",
+    "productCode": "D482",
+    "productName": "Compressed",
+    "statusCode": "A",
+    "statusText": "Available",
+    "url": "https://dds.cr.usgs.gov/download/eyJpZCI6NDU0MjAyMjQsImNvbnRhY3RJZCI6MTkyNTQyNX0="
+  }, {
+    "downloadId": 45420223,
+    "collectionName": "NAIP",
+    "datasetId": "5e83a340bf820c39",
+    "displayId": "M_3109758_SW_14_060_20201206",
+    "entityId": "3014361",
+    "eulaCode": null,
+    "filesize": 476737103,
+    "label": "Texas NAIP 2020",
+    "productCode": "D441",
+    "productName": "Full Resolution",
+    "statusCode": "A",
+    "statusText": "Available",
+    "url": "https://dds.cr.usgs.gov/download/eyJpZCI6NDU0MjAyMjMsImNvbnRhY3RJZCI6MTkyNTQyNX0="
+  }]
+}
