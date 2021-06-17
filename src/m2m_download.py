@@ -12,7 +12,7 @@ import json, io, time
 from zipfile import ZipFile
 import requests
 import sys, os
-import time
+import time, csv
 import boto3
 from botocore.exceptions import ClientError
 
@@ -241,8 +241,10 @@ if __name__ == '__main__':
                                 downloadUrls.append(download['url'])
 
                     print("FINAL downloadUrls COUNT:", len(downloadUrls))
-                    with open(data_path+'downloadUrls.json', 'w') as urls:
-                        json.dumps(urls)
+                    with open('downloadUrls.csv', 'w', newline='') as downloads:
+                    writer = csv.writer(open('downloadUrls.csv', 'w'), delimiter=',', lineterminator='\n')
+                        for x in downloadUrls:
+                            writer.writerow([x])
 
                     count = 0
                     rerun_list = []
