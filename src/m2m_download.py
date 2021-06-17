@@ -95,15 +95,16 @@ def runner(r):
     # if zip then unzip
     if file_name.endswith(".ZIP"):
         print('found zip file')
-        ZipFile.extractall('../data/{}'.format(file_name))
+        z = ZipFile('../data/{}'.format(file_name), 'r')
+        z.extractall()
 
-    # upload to s3
+    # get unzipped jp2 file(s) only and upload them to s3
     print("uploading file: ../data/{}".format(file_name))
     target = glob.glob(r"../data/*.jp2")
-    if len(target):
+    if target:
         for item in target:
             with open(item, 'rb') as upload:
-                upload_file(target, s3_bucket, object_name=s3_key + file_name)
+                upload_file(item, s3_bucket, object_name=s3_key + file_name)
 
     # after file is uploaded to s3, delete it locally
     os.remove("../data/{}".format(file_name))
@@ -188,7 +189,7 @@ if __name__ == '__main__':
             # Did we find products?
             if downloads:
                 requestedDownloadsCount = len(downloads)
-                print('(line 171) REQUESTED DOWNLOADS COUNT:', requestedDownloadsCount)
+                print('REQUESTED DOWNLOADS COUNT:', requestedDownloadsCount)
                 # set a label for the download request
                 label = "Texas NAIP 2020"
                 payload = {'downloads': downloads, 'label': label}
@@ -210,7 +211,7 @@ if __name__ == '__main__':
                     for download in downloadRetrieve['available']:
                         downloadUrls.append(download['url'])
 
-                    print("LINE 193---initial downloadUrls array count", len(downloadUrls))
+                    print("INITIAL downloadUrls COUNT", len(downloadUrls))
 
                     # if didn't get all of the requested downloads, call the download-retrieve method again after 30 seconds
                     while len(downloadUrls) < requestedDownloadsCount:
@@ -224,8 +225,7 @@ if __name__ == '__main__':
                             if download['downloadId'] not in downloadUrls:
                                 downloadUrls.append(download['url'])
 
-                    print("LINE 207---downloadUrls array count", len(downloadUrls))
-                    print("LINE 208---print out all downloadUrls", downloadUrls)
+                    print("FINAL downloadUrls COUNT:", len(downloadUrls))
 
                     count = 0
                     rerun_list = []
