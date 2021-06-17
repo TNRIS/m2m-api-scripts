@@ -241,7 +241,6 @@ if __name__ == '__main__':
                                 downloadUrls.append(download['url'])
 
                     print("FINAL downloadUrls COUNT:", len(downloadUrls))
-                    with open('downloadUrls.csv', 'w', newline='') as downloads:
                     writer = csv.writer(open('downloadUrls.csv', 'w'), delimiter=',', lineterminator='\n')
                         for x in downloadUrls:
                             writer.writerow([x])
