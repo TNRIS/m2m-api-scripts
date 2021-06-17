@@ -114,9 +114,9 @@ def runner(r, path):
                 f.write(chunk)
 
     # run unzipper method
-    unzipper(data_path)
+    unzipper(path)
     # run uploader method
-    uploader(data_path)
+    uploader(path)
 
 
 if __name__ == '__main__':
