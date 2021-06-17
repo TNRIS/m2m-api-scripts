@@ -242,8 +242,8 @@ if __name__ == '__main__':
 
                     print("FINAL downloadUrls COUNT:", len(downloadUrls))
                     writer = csv.writer(open('downloadUrls.csv', 'w'), delimiter=',', lineterminator='\n')
-                        for x in downloadUrls:
-                            writer.writerow([x])
+                    for x in downloadUrls:
+                        writer.writerow([x])
 
                     count = 0
                     rerun_list = []
