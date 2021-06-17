@@ -83,40 +83,45 @@ def upload_file(file_name, bucket, object_name=None):
     return True
 
 # main functions that downloads, unzips, uploads to s3, and removes local file from staging area
-def unzipper(path):
+def unzipper(path, file_name):
     for file in os.listdir(path):
-        if file.endswith('.zip'):
-            print("found zip:", zip)
+        if file.endswith('.ZIP') or file.endswith('.zip'):
+            print("found zip:", file)
             with ZipFile(path+file, 'r') as z:
                 print('extracting {}...'.format(z))
                 z.extractall(path)
+            os.remove(path+file)
+    # call uploader func
+    uploader(path, file_name)
 
-def uploader(path):
+# func to upload file(s) to s3; called by unzipper func
+def uploader(path, file_name):
     for file in os.listdir(path):
         if file.endswith('.jp2'):
             # upload jpeg to s3
-            print('uploading {}'.format(file))
-            with open(path+file, 'rb') as upload:
-                print('print out upload', upload)
+            print('found jp2 file')
+            with open(path+file, 'rb'):
+                print('upload path+file_name', path+file)
                 upload_file(path+file, s3_bucket, object_name=s3_key+file)
             os.remove(path+file)
-        if file.endswith('.tif') or file.endswith('.xml'):
+        elif file.endswith('.tif') or file.endswith('.xml'):
             # we don't want tiff files
+            print('found tif/xml file')
             os.remove(path+file)
 
-def runner(r, path):
+# main func that calls both unzipper and uploader methods above
+# called below in main logic
+def runner(r, path, count):
     file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
     print('file_name =', file_name)
     # write file from url to local file
-    with open(path+file_name, 'wb') as f:
+    with open(path+file_name+'_'+str(count), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
 
     # run unzipper method
-    unzipper(path)
-    # run uploader method
-    uploader(path)
+    unzipper(path, file_name)
 
 
 if __name__ == '__main__':
@@ -236,6 +241,8 @@ if __name__ == '__main__':
                                 downloadUrls.append(download['url'])
 
                     print("FINAL downloadUrls COUNT:", len(downloadUrls))
+                    with open(data_path+'downloadUrls.json', 'w') as urls:
+                        json.dumps(urls)
 
                     count = 0
                     rerun_list = []
@@ -247,7 +254,7 @@ if __name__ == '__main__':
                         response = requests.get(url, stream=True)
                         if response.ok:
                             print('response ok')
-                            runner(response, data_path)
+                            runner(response, data_path, count)
                         else:
                             print('response not good')
                             rerun_list.append(obj['url'])
@@ -256,11 +263,12 @@ if __name__ == '__main__':
                     # if so, try response again with runner func
                     if len(rerun_list) > 0:
                         print("rerun_list has {} urls. preparing to run...".format(len(rerun_list)))
-                        time.sleep(10)
+                        time.sleep(5)
+
                         for u in rerun_list:
                             response = requests.get(u, stream=True)
                             if response.ok:
-                                runner(response, data_path)
+                                runner(response, data_path, count)
 
                 else:
                     # Get all available downloads
