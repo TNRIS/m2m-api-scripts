@@ -11,7 +11,7 @@
 import json, io, time
 from zipfile import ZipFile
 import requests
-import sys, os, glob, sys
+import sys, os
 import time
 import boto3
 from botocore.exceptions import ClientError
@@ -82,38 +82,44 @@ def upload_file(file_name, bucket, object_name=None):
         return False
     return True
 
-# main function that downloads, unzips, uploads to s3, and removes local file from staging area
+# main functions that downloads, unzips, uploads to s3, and removes local file from staging area
+def unzipper(path):
+    for file in os.listdir(path):
+        if file.endswith('.zip'):
+            print("found zip:", zip)
+            with ZipFile(path+file, 'r') as z:
+                print('extracting {}...'.format(z))
+                z.extractall(path)
+
+def uploader(path):
+    for file in os.listdir(path):
+        if file.endswith('.jpeg'):
+            # upload jpeg to s3
+            print('uploading {}'.format(file))
+            with open(path+file, 'rb') as upload:
+                print('print out upload', upload)
+                upload_file(path+file, s3_bucket, object_name=s3_key+file)
+        # remove local file when complete
+        os.remove(data_path+file)
+
 def runner(r):
-    file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
-    print(file_name)
-    # write file to local file
+    # write file from url to local file
     with open('../data/{}'.format(file_name), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
 
-    # if zip then unzip
-    if file_name.endswith(".ZIP"):
-        print('found zip file')
-        z = ZipFile('../data/{}'.format(file_name), 'r')
-        z.extractall()
-
-    # get unzipped jp2 file(s) only and upload them to s3
-    print("uploading file: ../data/{}".format(file_name))
-    target = glob.glob(r"../data/*.jp2")
-    if target:
-        for item in target:
-            with open(item, 'rb') as upload:
-                upload_file(item, s3_bucket, object_name=s3_key + file_name)
-
-    # after file is uploaded to s3, delete it locally
-    os.remove("../data/{}".format(file_name))
+    # run unzipper method
+    unzipper(data_path)
+    # run uploader method
+    uploader(data_path)
 
 
 if __name__ == '__main__':
     print("\nRunning Script...\n")
 
     serviceUrl = "https://m2m.cr.usgs.gov/api/api/json/stable/"
+    data_path = "../data/"
 
     # login
     payload = {'username': m2m_user, 'password': m2m_pass}
