@@ -93,14 +93,16 @@ def unzipper(path):
 
 def uploader(path):
     for file in os.listdir(path):
-        if file.endswith('.jpeg'):
+        if file.endswith('.jp2'):
             # upload jpeg to s3
             print('uploading {}'.format(file))
             with open(path+file, 'rb') as upload:
                 print('print out upload', upload)
                 upload_file(path+file, s3_bucket, object_name=s3_key+file)
-        # remove local file when complete
-        os.remove(data_path+file)
+            os.remove(path+file)
+        if file.endswith('.tif') or file.endswith('.xml'):
+            # we don't want tiff files
+            os.remove(path+file)
 
 def runner(r):
     # write file from url to local file
