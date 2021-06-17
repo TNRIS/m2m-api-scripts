@@ -225,9 +225,9 @@ if __name__ == '__main__':
                     while len(downloadUrls) < requestedDownloadsCount:
                         preparingDownloads = requestedDownloadsCount - len(downloadUrls)
                         sleep_count += 1
-                        print("\n", preparingDownloads, "downloads are not available. waiting for 10 seconds.\n".format(sleep_count))
-                        time.sleep(10)
-                        print("Trying to retrieve data\n")
+                        print(preparingDownloads, "downloads are not available. waiting for 5 seconds...\n".format(sleep_count))
+                        time.sleep(5)
+                        print("Attempting to retrieve data...\n")
                         downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
                         for download in downloadRetrieve['available']:
                             if download['downloadId'] not in downloadUrls:
@@ -264,7 +264,7 @@ if __name__ == '__main__':
                     # Get all available downloads
                     for download in downloadRequest['availableDownloads']:
                         # TODO :: Implement a downloading routine
-                        print("(line 181) DOWNLOAD: " + download['url'])
+                        print("DOWNLOAD: " + download['url'])
 
         else:
             print("Search found no results.\n")
