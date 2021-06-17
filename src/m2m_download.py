@@ -104,9 +104,11 @@ def uploader(path):
             # we don't want tiff files
             os.remove(path+file)
 
-def runner(r):
+def runner(r, path):
+    file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
+    print('file_name =', file_name)
     # write file from url to local file
-    with open('../data/{}'.format(file_name), 'wb') as f:
+    with open(path+file_name, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
@@ -245,7 +247,7 @@ if __name__ == '__main__':
                         response = requests.get(url, stream=True)
                         if response.ok:
                             print('response ok')
-                            runner(response)
+                            runner(response, data_path)
                         else:
                             print('response not good')
                             rerun_list.append(obj['url'])
@@ -258,7 +260,7 @@ if __name__ == '__main__':
                         for u in rerun_list:
                             response = requests.get(u, stream=True)
                             if response.ok:
-                                runner(response)
+                                runner(response, data_path)
 
                 else:
                     # Get all available downloads
