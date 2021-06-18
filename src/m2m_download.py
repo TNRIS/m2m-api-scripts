@@ -28,6 +28,7 @@ m2m_pass = os.environ['M2M_PASS']
 
 # send http request
 def sendRequest(url, data, apiKey = None):
+
     json_data = json.dumps(data)
 
     if apiKey == None:
@@ -37,29 +38,33 @@ def sendRequest(url, data, apiKey = None):
         response = requests.post(url, json_data, headers = headers)
 
     try:
-      httpStatusCode = response.status_code
-      if response == None:
-          print("No output from service")
-          sys.exit()
-      output = json.loads(response.text)
-      if output['errorCode'] != None:
-          print(output['errorCode'], "- ", output['errorMessage'])
-          sys.exit()
-      if  httpStatusCode == 404:
-          print("404 Not Found")
-          sys.exit()
-      elif httpStatusCode == 401:
-          print("401 Unauthorized")
-          sys.exit()
-      elif httpStatusCode == 400:
-          print("Error Code", httpStatusCode)
-          sys.exit()
-    except Exception as e:
-          response.close()
-          print(e)
-          sys.exit()
-    response.close()
+        httpStatusCode = response.status_code
+        if response == None:
+            print("No output from service")
+            sys.exit()
+        output = json.loads(response.text)
 
+        if output['errorCode'] != None:
+            print(output['errorCode'], "- ", output['errorMessage'])
+            sys.exit()
+        if  httpStatusCode == 404:
+            print("404 Not Found")
+            sys.exit()
+        elif httpStatusCode == 401:
+            print("401 Unauthorized")
+            sys.exit()
+        elif httpStatusCode == 429:
+            print("429 Rate Limit")
+            sys.exit()
+        elif httpStatusCode == 400:
+            print("Error Code", httpStatusCode)
+            sys.exit()
+    except Exception as e:
+        response.close()
+        print(e)
+        sys.exit()
+
+    response.close()
     return output['data']
 
 def upload_file(file_name, bucket, object_name=None):
@@ -111,11 +116,11 @@ def uploader(path, file_name):
 
 # main func that calls both unzipper and uploader methods above
 # called below in main logic
-def runner(r, path, count):
+def runner(r, path):
     file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
     print('file_name =', file_name)
     # write file from url to local file
-    with open(path+file_name+'_'+str(count), 'wb') as f:
+    with open(path+file_name, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
@@ -211,6 +216,8 @@ if __name__ == '__main__':
                 # Call the download to get the direct download urls
                 downloadRequest = sendRequest(serviceUrl + "download-request", payload, apiKey)
 
+                # print('printing downloadRequest:', downloadRequest)
+
                 # PreparingDownloads has a valid link that can be used but data may not be immediately available
                 # Call the download-retrieve method to get download that is available for immediate download
                 if downloadRequest['preparingDownloads'] != None and len(downloadRequest['preparingDownloads']) > 0:
@@ -221,29 +228,28 @@ if __name__ == '__main__':
                     sleep_count = 0
 
                     for download in downloadRetrieve['available']:
-                        downloadUrls.append(download['url'])
-
-                    for download in downloadRetrieve['available']:
+                        print('adding initial downloadRetrieve[available] url', download['url'])
                         downloadUrls.append(download['url'])
 
                     print("INITIAL downloadUrls COUNT", len(downloadUrls))
 
-                    # if didn't get all of the requested downloads, call the download-retrieve method again after 30 seconds
+                    # if didn't get all of the requested downloads, call the download-retrieve method again after 5 seconds
                     while len(downloadUrls) < requestedDownloadsCount:
                         preparingDownloads = requestedDownloadsCount - len(downloadUrls)
                         sleep_count += 1
                         print(preparingDownloads, "downloads are not available. waiting for 5 seconds...\n".format(sleep_count))
+                        available_length = len(downloadRetrieve['available'])
                         time.sleep(5)
                         print("Attempting to retrieve data...\n")
                         downloadRetrieve = sendRequest(serviceUrl + "download-retrieve", payload, apiKey)
-                        for download in downloadRetrieve['available']:
-                            if download['downloadId'] not in downloadUrls:
+                        # if available_length < len(downloadRetrieve['available']):
+                        #     print('found some new data available')
+                        for download in downloadRetrieve['requested']:
+                            if download['url'] not in downloadUrls:
                                 downloadUrls.append(download['url'])
 
                     print("FINAL downloadUrls COUNT:", len(downloadUrls))
-                    writer = csv.writer(open('downloadUrls.csv', 'w'), delimiter=',', lineterminator='\n')
-                    for x in downloadUrls:
-                        writer.writerow([x])
+                    print("FINAL downloadUrls LIST:", downloadUrls)
 
                     count = 0
                     rerun_list = []
@@ -254,11 +260,11 @@ if __name__ == '__main__':
                         print('{}---{}'.format(count, url))
                         response = requests.get(url, stream=True)
                         if response.ok:
-                            print('response ok')
-                            runner(response, data_path, count)
+                            print('response OK')
+                            runner(response, data_path)
                         else:
-                            print('response not good')
-                            rerun_list.append(obj['url'])
+                            print('response NO good')
+                            rerun_list.append(url)
 
                     # check if any urls have been added to rerun list;
                     # if so, try response again with runner func
@@ -269,13 +275,13 @@ if __name__ == '__main__':
                         for u in rerun_list:
                             response = requests.get(u, stream=True)
                             if response.ok:
-                                runner(response, data_path, count)
+                                runner(response, data_path)
 
                 else:
                     # Get all available downloads
                     for download in downloadRequest['availableDownloads']:
                         # TODO :: Implement a downloading routine
-                        print("DOWNLOAD: " + download['url'])
+                        print("(LINE 286) DOWNLOAD: " + download['url'])
 
         else:
             print("Search found no results.\n")
