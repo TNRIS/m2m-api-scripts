@@ -1,8 +1,9 @@
 # usgs-m2m-api
 
-A script and documentation/instructions to transfer data using the [USGS Machine-to-Machine (M2M) API](https://m2m.cr.usgs.gov/) to a specified S3 bucket and key. The Machine-to-Machine API is a JSON-based REST API used to interact with USGS/EROS data inventories.
+#### about
+A script to transfer data using the [USGS Machine-to-Machine (M2M) API](https://m2m.cr.usgs.gov/) to a specified S3 bucket and key. The Machine-to-Machine API is a JSON-based REST API used to interact with USGS/EROS data inventories.
 
-This script was created for a specific purpose here at TNRIS to transfer about 13TB of NAIP 2020 imagery for the state of Texas in June 2021, but was written with the thought that it could be used again in the future for other purposes and for the general public. An AWS EC2 (server) was used to run the script in the cloud and dump the data directly into a specified S3 bucket/key.
+This script was created for a specific purpose here at TNRIS to transfer NAIP 2020 imagery for the state of Texas in June 2021. Was written with the thought that it could be used again for other datasets if desired, or for future years of NAIP. An AWS EC2 (server) was used to run the script in the cloud and dump the data directly into a specified S3 bucket/key.
 
 #### base-level requirements
 - Ubuntu 20.04 LTS (Focal Fossa) or Linux Mint 20.1 (Ulyssa)
@@ -14,7 +15,7 @@ This script was created for a specific purpose here at TNRIS to transfer about 1
   - once account is created, an Access Request for data can be created. Approval may take a day or two depending upon a variety of circumstances.
 
 #### setup
-- `git clone "this repo"`
+- `git clone https://github.com/TNRIS/m2m-api-scripts.git`
 - create a python virtual environment for the project (v3.8.5) using venv or whatever method you prefer
   - `python -m venv venv`
 - activate the python virtual environment
@@ -26,3 +27,16 @@ This script was created for a specific purpose here at TNRIS to transfer about 1
 - `source ./src/config/set-env-secrets.sh` to get secrets as local environment variables which are required in the scripts.
 - make necessary changes to script(s) for your specific purpose.
 - `python <insert-script-name-you-want-to-run-here.py>` to run script
+
+#### python requirements.txt
+- boto3==1.17.87
+- botocore==1.20.87
+- certifi==2021.5.30
+- chardet==4.0.0
+- idna==2.10
+- jmespath==0.10.0
+- python-dateutil==2.8.1
+- requests==2.25.1
+- s3transfer==0.4.2
+- six==1.16.0
+- urllib3==1.26.5
