@@ -84,7 +84,7 @@ class M2MTransfer(object):
 
     # method to upload file to s3
     def upload_file(self, file_name, bucket, object_name=None):
-        print('running upload_file method')
+        # print('running upload_file method')
         """
         Upload a file to an S3 bucket
         :param file_name: File to upload
@@ -189,7 +189,7 @@ class M2MTransfer(object):
                 # print('adding retrieve[available] url:', download['url'])
                 download_urls.append(download['url'])
 
-            print("count is: {} VS download_urls length: {}".format(count, len(download_urls)))
+            # print("count is: {} VS download_urls length: {}".format(count, len(download_urls)))
 
             # if didn't get all of the requested downloads, call the download-retrieve method again after 5 seconds
             while len(download_urls) < count:
