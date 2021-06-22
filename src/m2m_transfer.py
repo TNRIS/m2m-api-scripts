@@ -32,10 +32,15 @@ class M2MTransfer(object):
         self.label = label
         self.dataset_name = dataset_name
         self.starting_num = 1
-        self.paginator_count = 0
+        self.page_count = 0
+        self.scene_count = 0
+        self.product_count = 0
+        self.downloader_count = 0
+        self.jpeg_count = 0
+
         self.spatial_filter = spatial_filter
         self.temporal_filter = temporal_filter
-        self.temporal_filter = acquisition_filter
+        self.acquisition_filter = acquisition_filter
 
     # send http request
     def send_request(self, url, data, api_key = None):
@@ -46,7 +51,7 @@ class M2MTransfer(object):
         else:
             headers = {'X-Auth-Token': api_key}
             response = requests.post(url, json_data, headers = headers)
-        print('response reason:', response.__dict__['reason'])
+        # print('response:', response.__dict__['reason'])
         try:
             httpStatusCode = response.status_code
             if response == None:
@@ -97,18 +102,18 @@ class M2MTransfer(object):
             return False
         return True
 
-    def rerun_list(self, list):
-        print('rerun_list method')
-        # check if any urls have been added to rerun list;
-        # if so, try response again with downloader func
-        if len(list) > 0:
-            print("rerun_list has {} urls. preparing to run...".format(len(list)))
-            time.sleep(3)
-
-            for u in list:
-                response = requests.get(u, stream=True)
-                if response.ok:
-                    self.downloader(response, data_path)
+    # def rerun_list(self, list):
+    #     print('rerun_list method')
+    #     # check if any urls have been added to rerun list;
+    #     # if so, try response again with downloader func
+    #     if len(list) > 0:
+    #         print("rerun_list has {} urls. preparing to run...".format(len(list)))
+    #         time.sleep(3)
+    #
+    #         for u in list:
+    #             response = requests.get(u, stream=True)
+    #             if response.ok:
+    #                 self.downloader(response, data_path)
 
     # method to unzip and remove local file from staging area
     # def unzipper(self, path, file_name):
@@ -139,57 +144,67 @@ class M2MTransfer(object):
 
     # method to setup file_name and download file if jp2; calls uploader method
     def downloader(self, r):
-        print('run downloader method')
+        print('running downloader method')
+        self.downloader_count += 1
         file_name = r.headers['Content-Disposition'].rsplit('=')[1].strip('""')
         print('file_name =', file_name)
         # write file from url to local file
         if file_name.endswith('.jp2'):
-            with open(self.data_path + file_name, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=1024):
-                    if chunk:
-                        f.write(chunk)
+            print('found a jp2')
+            # with open(self.data_path + file_name, 'wb') as f:
+            #     for chunk in r.iter_content(chunk_size=1024):
+            #         if chunk:
+            #             f.write(chunk)
+            self.jpeg_count += 1
             # if jp2 file, call uploader method
-            self.uploader(self.data_path, file_name)
+            # self.uploader(self.data_path, file_name)
+            # when downloader_count == product_count, run paginator
+            # to search for more pages of data
+            if self.downloader_count == self.product_count:
+                print('downloader_count: {} --- product_count: {}'.format(self.downloader_count, self.scene_count))
+                self.paginator(self.scene_payload, self.scenes)
         elif file_name.endswith('.ZIP') or file_name.endswith('.zip'):
             print('skipping zip file')
+            if self.downloader_count == self.product_count:
+                print('downloader_count: {} --- product_count: {}'.format(self.downloader_count, self.scene_count))
+                self.paginator(self.scene_payload, self.scenes)
         else:
             print('found different file type:', file_name)
 
-    def download_retrieve(self, count, request, api_key):
+    def download_retrieve(self, count, request):
         print('running download_retrieve method')
         # PreparingDownloads has a valid link that can be used but data may not be immediately available
         # Call the download-retrieve method to get download that is available for immediate download
         if request['preparingDownloads'] != None and len(request['preparingDownloads']) > 0:
-            payload = {'label': label}
-            retrieve = self.send_request(self.service_url + "download-retrieve", payload, api_key)
-
-            print('retrieve response:', retrieve)
-
+            payload = {'label': self.label}
+            retrieve = self.send_request(self.service_url + "download-retrieve", payload, self.api_key)
+            # print('retrieve response:', retrieve)
             download_urls = []
             sleep_count = 0
 
             for download in retrieve['available']:
-                # print('adding initial retrieve[available] url', download['url'])
+                # print('adding retrieve[available] url:', download['url'])
                 download_urls.append(download['url'])
 
-            print("Initial download_urls count", len(download_urls))
+            print("count is: {} VS download_urls length: {}".format(count, len(download_urls)))
 
             # if didn't get all of the requested downloads, call the download-retrieve method again after 5 seconds
             while len(download_urls) < count:
                 preparing = count - len(download_urls)
                 sleep_count += 1
-                print(preparing, "downloads are not available. waiting for 5 seconds...\n".format(sleep_count))
+                print(preparing, "downloads are not available. waiting for 10 seconds...\n")
                 available_length = len(retrieve['available'])
-                time.sleep(5)
+                time.sleep(10)
                 print("Attempting to retrieve data...\n")
-                retrieve = self.send_request(self.service_url + "download-retrieve", payload, api_key)
+                retrieve = self.send_request(self.service_url + "download-retrieve", payload, self.api_key)
                 # if available_length < len(retrieve['available']):
                 #     print('found some new data available')
+                # go ahead and search retrieve['requested'] for urls not yet added
                 for download in retrieve['requested']:
                     if download['url'] not in download_urls:
                         download_urls.append(download['url'])
 
-            print("download_urls COUNT:", len(download_urls))
+            # print("download_urls COUNT:", len(download_urls))
             # print("FINAL download_urls LIST:", download_urls)
 
             count = 0
@@ -213,60 +228,82 @@ class M2MTransfer(object):
                 # TODO :: Implement a downloading routine
                 print("DOWNLOAD: " + download['url'])
 
-    def download_request(self, downloads, api_key):
+    def download_request(self, downloads):
         print('running download_request method')
         # Did we find products?
         if downloads:
-            req_downloads_count = len(downloads)
-            print('REQUESTED DOWNLOADS COUNT:', req_downloads_count)
+            downloads_count = len(downloads)
+            print('REQUESTED DOWNLOADS COUNT:', downloads_count)
             payload = {'downloads': downloads, 'label': self.label}
             # Call the download to get the direct download urls
-            download_request = self.send_request(self.service_url + "download-request", payload, api_key)
-
-            print('printing download_request:', download_request)
+            download_request = self.send_request(self.service_url + "download-request", payload, self.api_key)
 
         # call download_retrieve method
-        self.download_retrieve(req_downloads_count, download_request, api_key)
+        self.download_retrieve(downloads_count, download_request)
 
-    def download_options(self, dataset, ids, api_key):
+    def download_options(self, ids):
         print('running download_options method')
         # Find the download options for these scenes
         # NOTE :: Remember the scene list cannot exceed 50,000 items!
-        payload = {'datasetName': dataset['datasetAlias'], 'entityIds': ids}
-        print('LINE 226 test print')
-        download_options = self.send_request(self.service_url + "download-options", payload, api_key)
-        print('download options:', download_options)
+        payload = {'datasetName': self.dataset['datasetAlias'], 'entityIds': ids}
+        download_options = self.send_request(self.service_url + "download-options", payload, self.api_key)
+        # print('download options:', download_options)
         # Aggregate a list of available products
         downloads = []
         for product in download_options:
-            # print('product:', product)
             # Make sure the product is available for this scene
             if product['available'] == True:
-                print('test print 4')
+                self.product_count += 1
                 downloads.append({'entityId': product['entityId'], 'productId': product['id']})
 
-        print('print downloads:', downloads)
+        print('(line 259) downloads list length --- {}'.format(len(downloads)))
+        print('(line 260) product_count --- {}'.format(self.product_count))
 
         # call download_request method
-        self.download_request(downloads, api_key)
+        self.download_request(downloads)
 
-    def paginator(self, payload, scenes, total_hits, api_key):
+    def paginator(self, payload, scenes):
         # for pagination; add scenes['nextRecord'] as payload['startingNumber']
-        print('building scene list. this could take a bit...\n')
-        if scenes['nextRecord'] and self.paginator_count > 0:
-            self.starting_num = scenes['nextRecord']
-            print('payload["startingNumber"]:', scene_payload['startingNumber'])
-            scenes = self.send_request(self.service_url + "scene-search", scene_payload, api_key)
-            for result in scenes['results']:
+        print('running paginator method')
+        if self.scenes['nextRecord'] and self.page_count > 0:
+            scene_ids = []
+            self.page_count += 1
+            print('self.page_count =', self.page_count)
+            self.starting_num = self.scenes['nextRecord']
+            self.scene_payload = {
+                'datasetName': self.dataset['datasetAlias'],
+                # 'maxResults': 3,
+                'startingNumber': self.starting_num,
+                'sceneFilter': {
+                    'spatialFilter': self.spatial_filter,
+                    'acquisitionFilter': self.temporal_filter
+                    }
+                }
+            print('new starting_num in scene payload:', self.scene_payload)
+            self.scenes = self.send_request(self.service_url + "scene-search", self.scene_payload, self.api_key)
+            for result in self.scenes['results']:
                 scene_ids.append(result['entityId'])
+            for e in scene_ids:
+                self.scene_count += 1
+            # when finished compiling scene ids, print out total number of scenes
+            # to compare with scenes['totalHits']
+            print('{} of {} scene_ids built.\n'.format(self.scene_count, self.total_hits))
+            # call download_options method
+            self.download_options(scene_ids)
 
-            self.scene_search()
+        else:
+            print('\nNo more pagination!\n')
+            print('TOTAL PRODUCTS:', self.product_count)
+            print('TOTAL DOWNLOADED JP2s:', self.jpeg_count)
+            print('')
+            self.logout()
 
-    def scene_search(self, dataset, api_key):
-        print('running scene_paginator method')
+    def scene_search(self):
+        print('running scene_search method')
         # set more or remove filters here; for testing, setting the maxResults filter may be useful
-        scene_payload = {
-            'datasetName': dataset['datasetAlias'],
+        print('self.dataset["datasetAlias"]:', self.dataset['datasetAlias'])
+        self.scene_payload = {
+            'datasetName': self.dataset['datasetAlias'],
             # 'maxResults': 3,
             'startingNumber': self.starting_num,
             'sceneFilter': {
@@ -276,65 +313,62 @@ class M2MTransfer(object):
             }
         # Now I need to run a scene search to find data to download
         print("Searching scenes...\n")
-        scenes = self.send_request(self.service_url + "scene-search", scene_payload, api_key)
-        print('print initial scenes response:', scenes)
-        total_hits = scenes['totalHits']
-        print('scenes request total hits:', total_hits, '\n')
+        self.scenes = self.send_request(self.service_url + "scene-search", self.scene_payload, self.api_key)
+        # print('print initial scenes response:', self.scenes)
+        self.total_hits = self.scenes['totalHits']
+        print('scenes request total hits:', self.total_hits, '\n')
 
         # Did we find anything?
-        if scenes['recordsReturned'] > 0:
-            # add to paginator_count
-            self.paginator_count += 1
+        if self.scenes['recordsReturned'] > 0:
+            # add to page_count
+            self.page_count += 1
             # Aggregate a list of scene ids
             scene_ids = []
-            for result in scenes['results']:
+            for result in self.scenes['results']:
                 # Add scene to list
                 scene_ids.append(result['entityId'])
 
-            scene_count = 0
             for e in scene_ids:
-                scene_count += 1
+                self.scene_count += 1
             # when finished compiling scene ids, print out total number of scenes
             # to compare with scenes['totalHits']
-            print('{} of {} scene_ids built.\n'.format(scene_count, total_hits))
+            print('{} of {} scene_ids built.\n'.format(self.scene_count, self.total_hits))
             # call download_options method
-            self.download_options(dataset, scene_ids, api_key)
+            self.download_options(scene_ids)
         else:
             print("Search found no results.\n")
 
-    def dataset_searcher(self, api_key):
+    def dataset_searcher(self):
         print('running dataset_searcher method')
         payload = {'datasetName': self.dataset_name, 'spatialFilter': self.spatial_filter, 'temporalFilter': self.temporal_filter}
 
         print("Searching datasets...\n")
-        datasets = self.send_request(self.service_url + "dataset-search", payload, api_key)
+        datasets = self.send_request(self.service_url + "dataset-search", payload, self.api_key)
         if datasets:
             print("Found datasets:", len(datasets))
         # download datasets
         for dataset in datasets:
             # skip any other datasets that might be found, logging it in case I want to look into it later
-            if dataset['datasetAlias'] != self.dataset_name:
-                print("Found dataset " + dataset['collectionName'] + " but skipping it.\n")
-                continue
-
-            # call scene_search method
-            self.scene_search(dataset, api_key)
+            if dataset['datasetAlias'] == self.dataset_name:
+                # print("Found dataset " + dataset['collectionName'] + " but skipping it.\n")
+                self.dataset = dataset
+                # call scene_search method
+                self.scene_search()
 
     def login(self):
         print('running login method')
         # login
         payload = {'username': self.m2m_user, 'password': self.m2m_pass}
-        api_key = self.send_request(self.service_url + "login", payload)
-        print("API Key: " + api_key + "\n")
-
+        self.api_key = self.send_request(self.service_url + "login", payload)
+        print("API Key: " + self.api_key + "\n")
         # call dataset_searcher
-        self.dataset_searcher(api_key)
+        self.dataset_searcher()
 
-    def logout(self, api_key):
+    def logout(self):
         print('running logout method')
         # Logout so the API Key cannot be used anymore
         endpoint = "logout"
-        if self.send_request(self.service_url + endpoint, None, api_key) == None:
+        if self.send_request(self.service_url + endpoint, None, self.api_key) == None:
             print("Logged Out\n\n")
         else:
             print("Logout Failed\n\n")
