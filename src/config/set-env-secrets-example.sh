@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# SET AWS S3 CREDS AS ENV VARIABLES
-export AWS_KEY="<user aws iam access key>"
-export AWS_SECRET_KEY="<user aws iam secret key>"
+# SET AWS S3 INFO AS ENV VARIABLES
 export S3_BUCKET="<s3 bucket where to upload>"
 export S3_KEY="<s3 bucket key>"
 

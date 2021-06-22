@@ -1,0 +1,48 @@
+{
+  'cloudCover': None,
+  'entityId': '3014295',
+  'displayId': 'M_3109742_NW_14_060_20201206',
+  'orderingId': None,
+  'metadata': [],
+  'hasCustomizedMetadata': None,
+  'options': {
+    'bulk': True,
+    'download': True,
+    'order': False,
+    'secondary': False
+  },
+  'selected': {
+    'bulk': False,
+    'compare': False,
+    'order': False
+  },
+  'spatialBounds': {
+    'type': 'Polygon',
+    'coordinates': [
+      [
+        [-97.8778666, 31.3100972],
+        [-97.8778666, 31.377386],
+        [-97.8095722, 31.377386],
+        [-97.8095722, 31.3100972],
+        [-97.8778666, 31.3100972]
+      ]
+    ]
+  },
+  'spatialCoverage': {
+    'type': 'Polygon',
+    'coordinates': [
+      [
+        [-97.8778666, 31.3107027],
+        [-97.8104111, 31.3100972],
+        [-97.8095722, 31.3767777],
+        [-97.8770749, 31.377386],
+        [-97.8778666, 31.3107027]
+      ]
+    ]
+  },
+  'temporalCoverage': {
+    'endDate': '2020-12-06 00:00:00-06',
+    'startDate': '2020-12-06 00:00:00-06'
+  },
+  'publishDate': '2021-03-03 08:49:40.923101-06'
+}
