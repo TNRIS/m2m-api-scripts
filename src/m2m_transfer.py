@@ -36,7 +36,9 @@ class M2MTransfer(object):
         self.scene_count = 0
         self.product_count = 0
         self.downloader_count = 0
+        self.upload_count = 0
         self.jpeg_count = 0
+        self.skip_count = 0
 
         self.spatial_filter = spatial_filter
         self.temporal_filter = temporal_filter
@@ -44,7 +46,7 @@ class M2MTransfer(object):
 
     # send http request
     def send_request(self, url, data, api_key = None):
-        print('running send_request method')
+        # print('running send_request method')
         json_data = json.dumps(data)
         if api_key == None:
             response = requests.post(url, json_data)
@@ -136,11 +138,10 @@ class M2MTransfer(object):
                 # upload jpeg to s3
                 print('found jp2 file')
                 with open(path + file, 'rb'):
-                    print('upload path + file_name', path + file)
+                    # print('upload path + file_name', path + file)
                     self.upload_file(path + file, self.s3_bucket, object_name=self.s3_key+file)
+                    self.upload_count += 1
                 os.remove(path + file)
-            else:
-                print('uh oh. somehow another file type got in here.')
 
     # method to setup file_name and download file if jp2; calls uploader method
     def downloader(self, r):
@@ -151,25 +152,27 @@ class M2MTransfer(object):
         # write file from url to local file
         if file_name.endswith('.jp2'):
             print('found a jp2')
-            # with open(self.data_path + file_name, 'wb') as f:
-            #     for chunk in r.iter_content(chunk_size=1024):
-            #         if chunk:
-            #             f.write(chunk)
+            with open(self.data_path + file_name, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk:
+                        f.write(chunk)
             self.jpeg_count += 1
             # if jp2 file, call uploader method
-            # self.uploader(self.data_path, file_name)
-            # when downloader_count == product_count, run paginator
-            # to search for more pages of data
+            self.uploader(self.data_path, file_name)
+            # when downloader_count == product_count,
+            # run paginator to search for more pages of data
             if self.downloader_count == self.product_count:
                 print('downloader_count: {} --- product_count: {}'.format(self.downloader_count, self.scene_count))
                 self.paginator(self.scene_payload, self.scenes)
         elif file_name.endswith('.ZIP') or file_name.endswith('.zip'):
             print('skipping zip file')
+            self.skip_count += 1
             if self.downloader_count == self.product_count:
                 print('downloader_count: {} --- product_count: {}'.format(self.downloader_count, self.scene_count))
                 self.paginator(self.scene_payload, self.scenes)
         else:
             print('found different file type:', file_name)
+            self.skip_count += 1
 
     def download_retrieve(self, count, request):
         print('running download_retrieve method')
@@ -208,7 +211,7 @@ class M2MTransfer(object):
             # print("FINAL download_urls LIST:", download_urls)
 
             count = 0
-            rerun_list = []
+            # rerun_list = []
             # start download, unzip, and upload processes
             # calls the downloader function above at the start
             for url in download_urls:
@@ -220,7 +223,7 @@ class M2MTransfer(object):
                     self.downloader(response)
                 else:
                     print('response NO good')
-                    rerun_list.append(url)
+                    # rerun_list.append(url)
 
         else:
             # Get all available downloads
@@ -294,8 +297,9 @@ class M2MTransfer(object):
         else:
             print('\nNo more pagination!\n')
             print('TOTAL PRODUCTS:', self.product_count)
+            print('TOTAL SKIPPED PRODUCTS:', self.skip_count)
             print('TOTAL DOWNLOADED JP2s:', self.jpeg_count)
-            print('')
+            print('TOTAL UPLOADED JP2s:', self.upload_count)
             self.logout()
 
     def scene_search(self):
