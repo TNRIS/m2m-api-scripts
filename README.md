@@ -1,6 +1,5 @@
 # usgs-m2m-api
 
-#### about
 A script to transfer data using the [USGS Machine-to-Machine (M2M) API](https://m2m.cr.usgs.gov/) to a specified S3 bucket and key. The Machine-to-Machine API is a JSON-based REST API used to interact with USGS/EROS data inventories.
 
 This script was created for a specific purpose here at TNRIS to transfer NAIP 2020 imagery for the state of Texas in June 2021. Was written with the thought that it could be used again for other datasets if desired, or for future years of NAIP. An AWS EC2 (server) was used to run the script in the cloud and dump the data directly into a specified S3 bucket/key.
