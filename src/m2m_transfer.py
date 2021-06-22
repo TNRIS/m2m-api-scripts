@@ -135,8 +135,7 @@ class M2MTransfer(object):
         print('running uploader method')
         for file in os.listdir(path):
             if file.endswith('.jp2'):
-                # upload jpeg to s3
-                print('found jp2 file')
+                # upload jp2 file to s3
                 with open(path + file, 'rb'):
                     # print('upload path + file_name', path + file)
                     self.upload_file(path + file, self.s3_bucket, object_name=self.s3_key+file)
