@@ -16,14 +16,13 @@ This script was created for a specific purpose here at TNRIS to transfer NAIP 20
 #### setup
 - `git clone https://github.com/TNRIS/m2m-api-scripts.git`
 - create a python virtual environment for the project (v3.8.5) using venv or whatever method you prefer
-  - `python -m venv venv`
+  - `python3 -m venv venv`
 - activate the python virtual environment
   - `. venv/bin/activate`
-- `cd m2m-api-scripts/src`
-- `pip install -r requirements.txt`
+- `cd m2m-api-scripts/src` & `pip install -r requirements.txt`
 - make a copy or edit the name of the ./src/config/__set-env-secrets-example.sh__ file so you have just a __set-env-secrets.sh__ file in the same directory or wherever you want.
 - edit the __set-env-secrets.sh__ file to include your specific USGS M2M credentials, as well as the S3 bucket and key information if you are going to save data to S3.
-- `source ./src/config/set-env-secrets.sh` to get secrets as local environment variables which are required in the scripts.
+- `source ./src/config/set-env-secrets.sh` to get secrets as local environment variables which are required variables in the script(s).
 - make necessary changes to script(s) for your specific purpose.
 - `python <insert-script-name-you-want-to-run-here.py>` to run script
 
