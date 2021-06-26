@@ -202,7 +202,7 @@ class M2MTransfer(object):
                 # if available_length < len(retrieve['available']):
                 #     print('found some new data available')
                 # go ahead and search retrieve['requested'] for urls not yet added
-                for download in retrieve['requested']:
+                for download in retrieve['available']:
                     if download['url'] not in download_urls:
                         download_urls.append(download['url'])
 
